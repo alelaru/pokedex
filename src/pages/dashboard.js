@@ -29,9 +29,9 @@ const Dashboard = () => {
 
     return (
 
-        <div className="bg-gray-background text-center">
+        <div className="bg-gray-background">
         <Header></Header>
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 mt-3">
             {
              ! pokemonList ?(
                 <Skeleton count={1} width={1350} height={600}></Skeleton>

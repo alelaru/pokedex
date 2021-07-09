@@ -4,6 +4,7 @@ import { getDetailesFromPokemon } from "../services/apiCalls";
 import Header from "../components/header"
 import Skeleton from 'react-loading-skeleton';
 import ProfileHeader from "../components/pokemonProfile/header";
+import ProfileDetails from "../components/pokemonProfile/profile-details";
 
 
 //Page with the information of the pokemon
@@ -56,6 +57,7 @@ const DetailsPage = () => {
             : 
             <div className="text-center justify-center items-center bg-gray-background">
                 <ProfileHeader image={pokemonDetails.sprites?.front_default} name={pokemonDetails?.name} order={pokemonDetails?.order} types={pokemonDetails?.types}></ProfileHeader>
+                <ProfileDetails moves={pokemonDetails?.moves}></ProfileDetails>
             </div> 
             }
         </> 
