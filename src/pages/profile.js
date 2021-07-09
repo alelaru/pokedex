@@ -55,7 +55,7 @@ const DetailsPage = () => {
             <Skeleton count={1} width={1350} height={600}></Skeleton>
             : 
             <div className="text-center justify-center items-center bg-gray-background">
-                <ProfileHeader image={pokemonDetails.sprites?.front_default} name={pokemonDetails?.name} order={pokemonDetails?.order}></ProfileHeader>
+                <ProfileHeader image={pokemonDetails.sprites?.front_default} name={pokemonDetails?.name} order={pokemonDetails?.order} types={pokemonDetails?.types}></ProfileHeader>
             </div> 
             }
         </> 
