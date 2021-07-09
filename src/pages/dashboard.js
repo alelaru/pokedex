@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Pokemon from '../components/pokemon/pokemon';
 import Skeleton from 'react-loading-skeleton';
 import { getAllPokemons } from '../services/apiCalls';
-import Header from "../components/header/header";
+import Header from "../components/header";
 
 
 const Dashboard = () => {

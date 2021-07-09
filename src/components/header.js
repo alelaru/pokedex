@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import * as ROUTES from "../../constants/routes"
+import * as ROUTES from "../constants/routes"
 
 const Header = () => {
     return ( 
-        <header className="h-32 bg-white border-b border-gray-primary mb-8">
+        <header className="h-32 bg-white border-b border-gray-primary">
             {/* This one is used by facebook and other companies as well i just cenetered the PokeApi */}
             <div className="container mx-auto max-w-screen-lg h-full items-center">
                 <div className="flex justify-between h-full">
