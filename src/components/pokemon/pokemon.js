@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
 
-const Pokemon = ({ name }) => {
+const Pokemon = ({ pokemonName }) => {
     return (
         <div className="cursor-pointer ">
-            <Link to={`/profile/${name}`} className="">
-            <h1 >{name}</h1>
+            <Link to={`/p/${pokemonName}`} className="">
+            <h1 >{pokemonName}</h1>
             </Link>
         </div>
     );

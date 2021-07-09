@@ -1,5 +1,12 @@
+import { useParams } from "react-router-dom";
+
+
+
 const PokemonProfilePage = () => {
-    return ( <div>Pokemon</div> );
+    const {pokemonName} = useParams();
+    console.log(pokemonName);
+
+    return ( <div>{pokemonName}</div> );
 }
  
 export default PokemonProfilePage;

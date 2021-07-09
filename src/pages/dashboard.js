@@ -28,7 +28,7 @@ const Dashboard = () => {
                 <Skeleton count={1} width={1350} height={600}></Skeleton>
                 )
                 :(
-                pokemonList.map((pokemon, id) => <Pokemon key={id} name={pokemon.name} />)
+                pokemonList.map((pokemon, id) => <Pokemon key={id} pokemonName={pokemon.name} />)
                 )
             }
         </div>
