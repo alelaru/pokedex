@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Pokemon from '../components/pokemon/pokemon';
+import Skeleton from 'react-loading-skeleton';
 
 const Dashboard = () => {
 
@@ -18,12 +19,19 @@ const Dashboard = () => {
 
 
     return (
+
+        <div className="bg-gray-background text-center">
+        <div>Pokedex</div>
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5">
-            {pokemonList.map((pokemon, id) => {
-                return (
-                    <Pokemon key={id} name={pokemon.name} url={pokemon.url} />
+            {
+             ! pokemonList ?(
+                <Skeleton count={1} width={1350} height={600}></Skeleton>
                 )
-            })}
+                :(
+                pokemonList.map((pokemon, id) => <Pokemon key={id} name={pokemon.name} />)
+                )
+            }
+        </div>
         </div>
 
     );

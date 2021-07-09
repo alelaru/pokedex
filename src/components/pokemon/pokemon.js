@@ -1,7 +1,12 @@
-const Pokemon = ({ name, url }) => {
+import { Link } from "react-router-dom";
+
+
+const Pokemon = ({ name }) => {
     return (
-        <div>
-            <h1 src={url} width={50}>{name}</h1>
+        <div className="cursor-pointer ">
+            <Link to={`/profile/${name}`} className="">
+            <h1 >{name}</h1>
+            </Link>
         </div>
     );
 }
