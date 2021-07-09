@@ -1,7 +1,9 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Pokemon from '../components/pokemon/pokemon';
 import Skeleton from 'react-loading-skeleton';
+import { getAllPokemons } from '../services/apiCalls';
+import Header from "../components/header/header";
+
 
 const Dashboard = () => {
 
@@ -9,11 +11,18 @@ const Dashboard = () => {
 
     useEffect(() => {
 
-        axios.get(`https://pokeapi.co/api/v2/pokemon?limit=100&offset=200`)
-            .then(res => {
-                console.log(res.data.results);
-                setPokemonList(res.data.results);
-            })
+       async function checkPokemons(){
+            const pokemons = await getAllPokemons();
+            if(pokemons){
+                setPokemonList(pokemons)
+            }
+            else{
+                //Here it will take us to another page NOT FOUND or refresh it
+                console.log(pokemons);
+            }       
+        }
+
+       checkPokemons();
 
     }, []);
 
@@ -21,7 +30,7 @@ const Dashboard = () => {
     return (
 
         <div className="bg-gray-background text-center">
-        <div>Pokedex</div>
+        <Header></Header>
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5">
             {
              ! pokemonList ?(
