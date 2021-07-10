@@ -6,11 +6,11 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
 
   //If there is not an image an skeleton will appear
   return image ? (
-    <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
+    <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3">
       {/* Image of the pokemon */}
       <div className="flex items-center justify-center flex-col">
         <img
-          className="rounded-full border-4 border-gray-primary border-solid h-40 w-40 flex mt-4"
+          className="rounded-full border-4 border-gray-primary border-solid h-40 w-40 flex mt-2"
           alt={name}
           src={image}
         ></img>

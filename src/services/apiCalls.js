@@ -1,12 +1,13 @@
 import axios from "axios";
 
-//Function to call all the pokemons from the Dashboard page without arguments
+//Function to call all the pokemons from the Dashboard from the number of pokemon we need
 export const getAllPokemons = async (offset) => {
   console.log(offset);
-  console.log(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`);
   const results = await axios.get(
     `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
   );
+
+  //   `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
 
   // console.log(results);
 
@@ -18,6 +19,7 @@ export const getDetailesFromPokemon = async (pokemonName) => {
   const results = await axios.get(
     `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
   );
+  //   `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
   // console.log(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
   // console.log(results.data);
   // console.log("I finished the call");
