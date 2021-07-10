@@ -16,14 +16,23 @@ export const getAllPokemons = async (offset) => {
 
 //Function to call the details of a pokemon
 export const getDetailesFromPokemon = async (pokemonName) => {
-  const results = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-  );
+  var results = {};
+  await axios
+    .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    .then((resp) => {
+      results = resp.data;
+      //   console.log(evolutionChaiUrl);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      results = undefined;
+    });
+
   //   `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
   // console.log(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
   // console.log(results.data);
   // console.log("I finished the call");
-  return results.data;
+  return results;
 };
 
 //Function to call get the evolution-chain, first it will call the species api and get the chain from there
