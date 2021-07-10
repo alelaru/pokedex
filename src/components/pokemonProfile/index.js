@@ -15,7 +15,6 @@ const ProfilePokemon = () => {
     async function getPokemon() {
       const pokemon = await getDetailesFromPokemon(pokemonName);
       // console.log("The pokemon we recieve", pokemon);
-      console.log("NO HAY", pokemon);
       if (pokemon !== undefined) {
         setPokemonDetails(pokemon);
         // console.log("Entré");

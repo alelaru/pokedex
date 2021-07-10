@@ -14,7 +14,8 @@ export const getAllPokemons = async (offset) => {
   return results.data.results;
 };
 
-//Function to call the details of a pokemon
+//Function to call the details of a pokemon if its not successfull then it will return undefined or
+//the details of the pokemon if successfull
 export const getDetailesFromPokemon = async (pokemonName) => {
   var results = {};
   await axios
@@ -71,7 +72,22 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
   //Here we have an object with the following structure    https://pokeapi.co/api/v2/evolution-chain/1/
   //We iterate till evolves_to has a length of 0 that means there are not more pokemons to be retrieved
   while (done && evolution_chain) {
-    evolutionArray.push(evolution_chain.species.name);
+    evolutionArray.push({
+      name: evolution_chain.species.name,
+      url: evolution_chain.species.url
+        .substr(0, evolution_chain.species.url.lastIndexOf("/"))
+        .split("es/")
+        .pop(),
+    });
+
+    // console.log(
+    //   "Este es el núemro",
+    //   evolution_chain.species.url
+    //     .substr(0, evolution_chain.species.url.lastIndexOf("/"))
+    //     .split("es/")
+    //     .pop()
+    // );
+
     if (evolution_chain.evolves_to.length === 0) {
       done = false;
     } else {
@@ -79,6 +95,5 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
     }
   }
 
-  //   console.log(evolutionArray);
   return evolutionArray;
 };
