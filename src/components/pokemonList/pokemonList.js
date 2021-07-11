@@ -22,6 +22,7 @@ const PokemonList = () => {
   }
 
   useEffect(() => {
+    numberOfPokemons = 0;
     setLoading(true);
     checkPokemons(numberOfPokemons);
   }, []);
@@ -41,10 +42,15 @@ const PokemonList = () => {
           {pokemonList.map((pokemon, id) => (
             <Pokemon key={id} pokemonName={pokemon.name} />
           ))}
-
-          <button type="button" onClick={loadMorePokemons}>
-            Load more pokemons
-          </button>
+          <div className="flex justify-center m-4 p-4 py-6 rounded-full border round border-gray-primary bg-white text-center hover:bg-type-flying shadow-xl md:col-start-2 sm:col-span-3 md:col-span-2 ">
+            <button
+              type="button"
+              className="font-medium capitalize text-xl"
+              onClick={loadMorePokemons}
+            >
+              Load more pokemons
+            </button>
+          </div>
         </>
       )}
     </>
