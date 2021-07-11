@@ -1,13 +1,6 @@
-import { useEffect } from "react";
 import Header from "../components/header";
 import ProfilePokemon from "../components/pokemonProfile";
-import Footer from "../components/footer";
 const DetailsPage = () => {
-  //Check if the pokemon exists
-  useEffect(() => {
-    return () => {};
-  }, []);
-
   return (
     <>
       <div>
@@ -16,7 +9,6 @@ const DetailsPage = () => {
           <ProfilePokemon></ProfilePokemon>
         </div>
       </div>
-      {/* <Footer></Footer> */}
     </>
   );
 };

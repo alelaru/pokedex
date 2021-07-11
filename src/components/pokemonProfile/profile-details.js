@@ -54,22 +54,24 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
         ))}
       </div>
       {/* Here is the Evolution part flex-col of 4 elements, there are maximium 3 evolutions*/}
-      <div className="flex justify-center font-bold text-2xl">
-        <p>Evolution</p>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3 ">
-        {evolutions?.map((item, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-center flex-col"
-          >
-            <img
-              alt={item.name}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url}.png`}
-            ></img>
-            <p key={item.name}>{item.name}</p>
-          </div>
-        ))}
+      <div>
+        <div className="flex justify-center font-bold text-2xl">
+          <p>Evolution</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3 ">
+          {evolutions?.map((item, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center flex-col"
+            >
+              <img
+                alt={item.name}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url}.png`}
+              ></img>
+              <p key={item.name}>{item.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Moves starts it has almost the same format as Evolution */}
