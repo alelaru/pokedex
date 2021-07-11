@@ -62,7 +62,6 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
   await axios
     .get(evolutionChaiUrl)
     .then((resp) => {
-      //   console.log("Inside", resp.data.chain);
       evolution_chain = resp.data.chain;
       done = true;
     })
@@ -70,8 +69,6 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
       console.log(err.message);
     });
 
-  console.log("size of evolution", evolution_chain.length);
-  console.log(evolution_chain);
   //Here we have an object with the following structure    https://pokeapi.co/api/v2/evolution-chain/1/
   //We iterate till evolves_to has a length of 0 that means there are not more pokemons to be retrieved
   while (done && evolution_chain) {

@@ -4,6 +4,7 @@ import { getDetailesFromPokemon } from "../../services/apiCalls";
 import ProfileHeader from "./header";
 import ProfileDetails from "./profile-details";
 import * as ROUTES from "../../constants/routes";
+import Footer from "../footer";
 
 const ProfilePokemon = () => {
   const { pokemonName } = useParams();

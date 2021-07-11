@@ -11,10 +11,6 @@ module.exports = {
         medium: "#005c98",
       },
       green: "rgba(5, 150, 105)",
-      black: {
-        light: "#262626",
-        faded: "#00000059",
-      },
       gray: {
         base: "#616161",
         background: "#fafafa",

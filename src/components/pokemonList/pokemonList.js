@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import { getAllPokemons } from "../../services/apiCalls";
+import PillButton from "../extra/pill-button";
 import Pokemon from "../pokemon/pokemon";
 
 var numberOfPokemons = 0;
@@ -28,7 +29,6 @@ const PokemonList = () => {
   }, []);
 
   const loadMorePokemons = () => {
-    // console.log(numberOfPokemons);
     numberOfPokemons = numberOfPokemons + 20;
     checkPokemons(numberOfPokemons);
   };
@@ -43,13 +43,10 @@ const PokemonList = () => {
             <Pokemon key={id} pokemonName={pokemon.name} />
           ))}
           <div className="flex justify-center m-4 p-4 py-6 rounded-full border round border-gray-primary bg-white text-center hover:bg-type-flying shadow-xl md:col-start-2 sm:col-span-3 md:col-span-2 ">
-            <button
-              type="button"
-              className="font-medium capitalize text-xl"
-              onClick={loadMorePokemons}
-            >
-              Load more pokemons
-            </button>
+            <PillButton
+              customClickEvent={loadMorePokemons}
+              text={"Load more pokemons"}
+            ></PillButton>
           </div>
         </>
       )}

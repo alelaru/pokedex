@@ -1,9 +1,9 @@
 import Skeleton from "react-loading-skeleton";
+import TextPill from "../extra/pill-text";
 
 const ProfileHeader = ({ image, name, order, types, abilities }) => {
-  // console.log("The type is",types);
-  //The types is an array that inside contains an object, i realized there are just few types
-
+  console.log("oder", order);
+  //The types is an array that inside contains an object, i realized there are just few types max 3
   //If there is not an image an skeleton will appear
   return image ? (
     // First div here we need to change everything to go in 1 row when small
@@ -25,27 +25,26 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
           </p>
         </div>
         {/* Abilities and Types tried to split it in different components but not successfull*/}
-        <div className="grid mt-4 grid-cols-1 md:grid-cols-4">
-          <p className="font-medium md:mr-10">Abilities: </p>
+        <div className="grid mt-4 grid-cols-1 md:grid-cols-4 gap-10">
+          <p className="font-medium">Abilities: </p>
           {abilities?.map((element, index) => (
-            <p
-              key={index}
-              className={`md:mr-10 bg-type-ability border border-solid rounded-xl w-32 h-7 text-white`}
-            >
-              {element.ability.name}
-            </p>
+            <TextPill
+              className="md:mr-10x"
+              id={index}
+              value={element.ability.name}
+              color={"ability"}
+            ></TextPill>
           ))}
         </div>
         {/* Types start here */}
-        <div className="grid mt-4 grid-cols-1 md:grid-cols-4">
-          <p className="font-medium md:mr-14">Types: </p>
+        <div className="grid mt-4 grid-cols-1 md:grid-cols-4 gap-10">
+          <p className="font-medium ">Types: </p>
           {types?.map((element, index) => (
-            <p
-              key={index}
-              className={`md:mr-10 bg-type-${element.type.name} border rounded-xl w-32 h-7 text-white`}
-            >
-              {element.type.name}
-            </p>
+            <TextPill
+              value={element.type.name}
+              color={element.type.name}
+              id={index}
+            ></TextPill>
           ))}
         </div>
       </div>
