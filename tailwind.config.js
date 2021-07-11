@@ -10,6 +10,7 @@ module.exports = {
       blue: {
         medium: "#005c98",
       },
+      green: "rgba(5, 150, 105)",
       black: {
         light: "#262626",
         faded: "#00000059",
@@ -18,6 +19,7 @@ module.exports = {
         base: "#616161",
         background: "#fafafa",
         primary: "#dbdbdb",
+        progress: "rgba(209, 213, 219)",
       },
       red: {
         primary: "#ed4956",

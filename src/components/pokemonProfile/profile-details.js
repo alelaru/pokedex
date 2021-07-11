@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getEvolutionChainFromId } from "../../services/apiCalls";
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
+import ProgressBar from "./progressBar";
 
 const ProfileDetails = ({ moves, stats, pokemonId }) => {
   //Get evolution from making an API request
@@ -51,8 +52,9 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
         {stats?.map((item, id) => (
           <div className="flex items-center justify-center flex-col">
             <p key={id}>
-              {item.stat.name}: {item.base_stat}
+              {item.stat.name} : {item.base_stat}
             </p>
+            <ProgressBar progressPercentage={item.base_stat}></ProgressBar>
           </div>
         ))}
       </div>
