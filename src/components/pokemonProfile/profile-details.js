@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getEvolutionChainFromId } from "../../services/apiCalls";
 import PropTypes from "prop-types";
+import Skeleton from "react-loading-skeleton";
 
 const ProfileDetails = ({ moves, stats, pokemonId }) => {
   //Get evolution from making an API request
@@ -11,22 +12,22 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
       const apiResult = await getEvolutionChainFromId(pokemonId);
       // console.log("The pokemon we recieve", pokemon);
       if (apiResult) {
-        console.log("Esto regresa del API", apiResult);
+        // console.log("Esto regresa del API", apiResult);
         setEvolutions(apiResult);
-        console.log("Aquí están las evoluciones", evolutions);
+        // console.log("Aquí están las evoluciones", evolutions);
       } else {
         //Here it will take us to another page NOT FOUND or refresh it
-        console.log("No se encontraron cadenas de evoluciones", evolutions);
+        console.log("No se encontraron cadenas de evoluciones");
       }
     }
 
     if (pokemonId) {
       getEvolutions();
     }
-  }, [pokemonId, stats, moves, evolutions]);
+  }, [pokemonId, stats, moves]);
 
-  return (
-    <div className="h-16 border-t border-gray-primary mt-12 pt-4 text-center justify-center items-center bg-gray-background">
+  return evolutions.length > 1 ? (
+    <>
       {/* Here is the Evolution part flex-col of 4 elements, there are maximium 3 evolutions*/}
       <div className="flex justify-center font-bold text-2xl">
         <p>Evolution</p>
@@ -67,7 +68,9 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
           </div>
         ))}
       </div>
-    </div>
+    </>
+  ) : (
+    <Skeleton count={1} width={1300} height={400}></Skeleton>
   );
 };
 

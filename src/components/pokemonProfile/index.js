@@ -39,11 +39,13 @@ const ProfilePokemon = () => {
         types={pokemonDetails?.types}
         abilities={pokemonDetails?.abilities}
       ></ProfileHeader>
-      <ProfileDetails
-        moves={pokemonDetails?.moves}
-        stats={pokemonDetails?.stats}
-        pokemonId={pokemonDetails?.id}
-      ></ProfileDetails>
+      <div className="h-16 border-t border-gray-primary mt-12 pt-4 text-center justify-center items-center">
+        <ProfileDetails
+          moves={pokemonDetails?.moves}
+          stats={pokemonDetails?.stats}
+          pokemonId={pokemonDetails?.id}
+        ></ProfileDetails>
+      </div>
     </>
   ) : null;
 };

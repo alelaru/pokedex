@@ -6,7 +6,8 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
 
   //If there is not an image an skeleton will appear
   return image ? (
-    <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3">
+    // First div here we need to change everything to go in 1 row when small
+    <div className=" grid grid-cols-1 md:grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3">
       {/* Image of the pokemon */}
       <div className="flex items-center justify-center flex-col">
         <img
@@ -15,31 +16,33 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
           src={image}
         ></img>
       </div>
-      {/* The information of the header name and order together */}
-      <div className="flex items-center justify-center flex-col col-span-2">
-        <div className="container flex items-center">
-          <p className="capitalize text-3xl mr-4">
+      {/* The information of the header name, abilities and types */}
+      <div className="flex items-center justify-center flex-col col-span-1 sm:col-span-2">
+        {/* //Here the Name starts */}
+        <div className="container md:flex">
+          <p className="capitalize text-3xl">
             {name} #{order}
           </p>
         </div>
-        {/* Abilities and Types*/}
-        <div className="container flex mt-4 ">
-          <p className="font-medium mr-10">Abilities: </p>
+        {/* Abilities and Types tried to split it in different components but not successfull*/}
+        <div className="grid mt-4 grid-cols-1 md:grid-cols-4">
+          <p className="font-medium md:mr-10">Abilities: </p>
           {abilities?.map((element, index) => (
             <p
               key={index}
-              className={`mr-10 bg-type-ability border border-solid rounded-xl w-36 h-7 text-white`}
+              className={`md:mr-10 bg-type-ability border border-solid rounded-xl w-32 h-7 text-white`}
             >
               {element.ability.name}
             </p>
           ))}
         </div>
-        <div className="container flex mt-4 ">
-          <p className="font-medium mr-14">Types: </p>
+        {/* Types start here */}
+        <div className="grid mt-4 grid-cols-1 md:grid-cols-4">
+          <p className="font-medium md:mr-14">Types: </p>
           {types?.map((element, index) => (
             <p
               key={index}
-              className={`mr-10 bg-type-${element.type.name} border rounded-xl w-36 h-7 text-white`}
+              className={`md:mr-10 bg-type-${element.type.name} border rounded-xl w-32 h-7 text-white`}
             >
               {element.type.name}
             </p>
@@ -48,9 +51,7 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
       </div>
     </div>
   ) : (
-    <>
-      <Skeleton count={1} width={1300} height={156}></Skeleton>
-    </>
+    <Skeleton count={1} width={1300} height={156}></Skeleton>
   );
 };
 

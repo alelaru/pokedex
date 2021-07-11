@@ -9,12 +9,12 @@ const DetailsPage = () => {
   }, []);
 
   return (
-    <div className="bg-gray-background">
+    <>
       <Header></Header>
-      <div className="text-center justify-center items-center bg-gray-background">
+      <div className="text-center justify-center items-center ">
         <ProfilePokemon></ProfilePokemon>
       </div>
-    </div>
+    </>
   );
 };
 

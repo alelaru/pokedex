@@ -40,7 +40,7 @@ export const getDetailesFromPokemon = async (pokemonName) => {
 //The next step is to get the information from the evolution chain api
 //It calls frist the species api to get the chain-evolution id and then make the correct call
 export const getEvolutionChainFromId = async (pokemonId: number) => {
-  var done = true;
+  var done = false;
   var evolution_chain = {};
   let evolutionChaiUrl = "";
   let evolutionArray: Array<string> = [];
@@ -64,11 +64,14 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
     .then((resp) => {
       //   console.log("Inside", resp.data.chain);
       evolution_chain = resp.data.chain;
+      done = true;
     })
     .catch((err) => {
       console.log(err.message);
     });
 
+  console.log("size of evolution", evolution_chain.length);
+  console.log(evolution_chain);
   //Here we have an object with the following structure    https://pokeapi.co/api/v2/evolution-chain/1/
   //We iterate till evolves_to has a length of 0 that means there are not more pokemons to be retrieved
   while (done && evolution_chain) {
@@ -79,14 +82,6 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
         .split("es/")
         .pop(),
     });
-
-    // console.log(
-    //   "Este es el núemro",
-    //   evolution_chain.species.url
-    //     .substr(0, evolution_chain.species.url.lastIndexOf("/"))
-    //     .split("es/")
-    //     .pop()
-    // );
 
     if (evolution_chain.evolves_to.length === 0) {
       done = false;
