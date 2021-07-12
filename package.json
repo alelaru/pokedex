@@ -23,14 +23,34 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
+    "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/app.css --watch",
+    "test": "craco test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!<rootDir>/src/App.js",
+      "!<rootDir>/src/index.js",
+      "!<rootDir>/src/seed.js"
+    ],
+    "coverageThreshold":{
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters":[
+        "html",
+        "text"
     ]
   },
   "browserslist": {

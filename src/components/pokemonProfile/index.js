@@ -4,7 +4,6 @@ import { getDetailesFromPokemon } from "../../services/apiCalls";
 import ProfileHeader from "./header";
 import ProfileDetails from "./profile-details";
 import * as ROUTES from "../../constants/routes";
-import Footer from "../footer";
 
 const ProfilePokemon = () => {
   const { pokemonName } = useParams();
@@ -15,21 +14,15 @@ const ProfilePokemon = () => {
     //Function that calls the apiCalls in the services folder with axios and checks if there is a pokemon or not
     async function getPokemon() {
       const pokemon = await getDetailesFromPokemon(pokemonName);
-      // console.log("The pokemon we recieve", pokemon);
       if (pokemon !== undefined) {
         setPokemonDetails(pokemon);
-        // console.log("Entré");
       } else {
         //Here it will take us to another page NOT FOUND or refresh it
         history.push(ROUTES.NOT_FOUND);
       }
     }
     getPokemon();
-    // console.log("Pokemon Data", pokemonDetails);
-    // getDetailesFromPokemon(pokemonName);
   }, [pokemonName, history]);
-
-  // }, [pokemonDetails, pokemonName]);
 
   return pokemonDetails ? (
     <>

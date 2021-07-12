@@ -1,17 +1,19 @@
 import axios from "axios";
 
 //Function to call all the pokemons from the Dashboard from the number of pokemon we need
-export const getAllPokemons = async (offset) => {
-  console.log(offset);
-  const results = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
-  );
+export const fetchAllPokemons = async (offset) => {
+  var results = [];
+  await axios
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=1&offset=${offset}`)
+    .then((res) => {
+      results = res.data.results;
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
 
-  //   `https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`
-
-  // console.log(results);
-
-  return results.data.results;
+  console.log(results);
+  return results;
 };
 
 //Function to call the details of a pokemon if its not successfull then it will return undefined or

@@ -29,8 +29,8 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
           <p className="font-medium">Abilities: </p>
           {abilities?.map((element, index) => (
             <TextPill
+              key={index}
               className="md:mr-10x"
-              id={index}
               value={element.ability.name}
               color={"ability"}
             ></TextPill>
@@ -41,9 +41,9 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
           <p className="font-medium ">Types: </p>
           {types?.map((element, index) => (
             <TextPill
+              key={index}
               value={element.type.name}
               color={element.type.name}
-              id={index}
             ></TextPill>
           ))}
         </div>

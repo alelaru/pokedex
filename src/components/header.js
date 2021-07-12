@@ -12,6 +12,7 @@ const Header = () => {
               <img
                 src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png"
                 alt="PokeAPI"
+                title="PokeAPI"
                 className="mt-2 w-12/12  "
               ></img>
             </Link>

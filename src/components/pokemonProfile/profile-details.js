@@ -20,12 +20,10 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
 
   useEffect(() => {
     async function getEvolutions() {
+      console.log(pokemonId);
       const apiResult = await getEvolutionChainFromId(pokemonId);
-      // console.log("The pokemon we recieve", pokemon);
       if (apiResult) {
-        // console.log("Esto regresa del API", apiResult);
         setEvolutions(apiResult);
-        // console.log("Aquí están las evoluciones", evolutions);
       } else {
         //Here it will take us to another page NOT FOUND or refresh it
         console.log("No se encontraron cadenas de evoluciones");
@@ -80,7 +78,7 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-between mx-auto max-h-44 max-w-screen-lg mt-3 overflow-y-auto border-t-2 border-b-2 rounded border-gray-primary p-4">
         {moves?.map((item, id) => (
-          <TextPill id={id} value={item.move.name} color="ability"></TextPill>
+          <TextPill key={id} value={item.move.name} color="ability"></TextPill>
         ))}
       </div>
       {/* <div className="flex justify-center font-bold text-2xl m-4 p-4 py-6 w-2/4 rounded-full border round border-gray-primary bg-white hover:bg-type-flying shadow-xl "> */}

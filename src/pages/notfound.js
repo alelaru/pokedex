@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import PillButton from "../components/extra/pill-button";
 import Header from "../components/header";
@@ -5,6 +6,16 @@ import * as ROUTES from "../constants/routes";
 
 const NotFound = () => {
   const history = useHistory();
+
+  useEffect(() => {
+    
+    document.title = "Not Found - Pokedex"
+  
+  }, [ ]);
+
+  const handleClick = () => {
+    history.push(ROUTES.DASHBOARD);
+  }
 
   return (
     <div className="bg-gray-background h-full">
@@ -15,7 +26,7 @@ const NotFound = () => {
       <div className="flex justify-center w-8/12 sm:w-6/12 font-bold text-2xl mx-auto p-4 mt-6 rounded-full border round border-gray-primary bg-white hover:bg-type-flying shadow-xl">
         <PillButton
           text="Go to Home Page"
-          customClickEvent={() => history.push(ROUTES.DASHBOARD)}
+          customClickEvent={handleClick}
         ></PillButton>
       </div>
     </div>

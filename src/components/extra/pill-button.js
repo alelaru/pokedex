@@ -4,6 +4,7 @@ const PillButton = ({ text, customClickEvent }) => {
   return (
     <button
       type="button"
+      title="button-click"
       className="font-medium capitalize text-xl"
       onClick={customClickEvent}
     >
