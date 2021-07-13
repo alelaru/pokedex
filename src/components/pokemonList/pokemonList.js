@@ -10,9 +10,10 @@ const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
 
   //This functions calls the asyncronous funcions of getAllPokemons from services/apiCalls
+    
   async function checkPokemons(offset) {
     const pokemons = await fetchAllPokemons(offset);
-    if (pokemons) {
+    if (pokemons.length > 0) {
       setPokemonList([...pokemonList, ...pokemons]);
     } else {
       //Here it will take us to another page NOT FOUND or refresh it
@@ -26,7 +27,7 @@ const PokemonList = () => {
   }, []);
 
   const loadMorePokemons = () => {
-    numberOfPokemons = numberOfPokemons + 500;
+    numberOfPokemons = numberOfPokemons + 250;
     console.log(numberOfPokemons);
     checkPokemons(numberOfPokemons);
   };
@@ -34,14 +35,16 @@ const PokemonList = () => {
   return (
     <>
       {! pokemonList.length > 0 ? (
-        <Skeleton count={1} width={1350} height={600}></Skeleton>
+        <div data-testid="loading">
+        <Skeleton data-testid="loading" count={1} width={1350} height={600}></Skeleton>
+        </div>
       ) : (
         <>
           {pokemonList.map((pokemon, id) => (
             <Pokemon key={id} pokemonName={pokemon.name} />
           ))}
           {numberOfPokemons <= 1118 ? (
-            <div className="flex justify-center m-4 p-4 py-6 rounded-full border round border-gray-primary bg-white text-center hover:bg-type-flying shadow-xl md:col-start-2 sm:col-span-3 md:col-span-2 ">
+            <div data-testid="resolved" className="flex justify-center m-4 p-4 py-6 rounded-full border round border-gray-primary bg-white text-center hover:bg-type-flying shadow-xl md:col-start-2 sm:col-span-3 md:col-span-2 ">
               <PillButton
                 customClickEvent={loadMorePokemons}
                 text={"Load more pokemons"}

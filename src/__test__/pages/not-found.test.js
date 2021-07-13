@@ -22,6 +22,7 @@ describe('<NotFound />', () => {
             </Router>
         );
 
+        //Expect that everything is rendered
         expect(getByText("Not Found")).toBeTruthy();
         expect(document.title).toEqual('Not Found - Pokedex');
         expect(getByText("Go to Home Page")).toBeTruthy();
@@ -33,6 +34,6 @@ describe('<NotFound />', () => {
 
         // Clicking the image and then move to the Homepage
         fireEvent.click(getByTitle("PokeAPI"));
-        debug();
+        // debug();
     })
 })

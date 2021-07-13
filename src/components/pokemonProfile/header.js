@@ -13,6 +13,7 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
         <img
           className="rounded-full border-4 border-gray-primary border-solid h-40 w-40 flex mt-2"
           alt={name}
+          data-testid="image"
           src={image}
         ></img>
       </div>
@@ -31,6 +32,7 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
             <TextPill
               key={index}
               className="md:mr-10x"
+              title={element.ability.name}
               value={element.ability.name}
               color={"ability"}
             ></TextPill>

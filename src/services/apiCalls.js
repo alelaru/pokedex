@@ -1,30 +1,31 @@
 import axios from "axios";
 
 //Function to call all the pokemons from the Dashboard from the number of pokemon we need
-export const fetchAllPokemons = async (offset) => {
+export async function fetchAllPokemons(offset: number){
   var results = [];
   await axios
-    .get(`https://pokeapi.co/api/v2/pokemon?limit=1&offset=${offset}`)
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=250&offset=${offset}`)
     .then((res) => {
       results = res.data.results;
     })
     .catch((err) => {
-      console.log(err.message);
+      console.log("error");
+      results = [];
     });
 
-  console.log(results);
   return results;
 };
 
 //Function to call the details of a pokemon if its not successfull then it will return undefined or
 //the details of the pokemon if successfull
-export const getDetailesFromPokemon = async (pokemonName) => {
+export const getDetailesFromPokemon = async (pokemonName: string) => {
   var results = {};
   await axios
     .get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then((resp) => {
       results = resp.data;
       //   console.log(evolutionChaiUrl);
+      console.log("Enter");
     })
     .catch((err) => {
       console.log(err.message);
@@ -55,6 +56,7 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
       //   console.log(evolutionChaiUrl);
     })
     .catch((err) => {
+      return undefined;
       console.log(err.message);
     });
 
@@ -69,6 +71,7 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
     })
     .catch((err) => {
       console.log(err.message);
+      return undefined;
     });
 
   //Here we have an object with the following structure    https://pokeapi.co/api/v2/evolution-chain/1/

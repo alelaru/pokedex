@@ -20,7 +20,6 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
 
   useEffect(() => {
     async function getEvolutions() {
-      console.log(pokemonId);
       const apiResult = await getEvolutionChainFromId(pokemonId);
       if (apiResult) {
         setEvolutions(apiResult);
@@ -35,40 +34,49 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
     }
   }, [pokemonId, stats, moves]);
 
-  return evolutions.length > 0 && moves ? (
+  return (
     <>
+    
+    
       {/* Statistics starts it has almost the same format as Evolution */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3 mb-8">
         <div className="flex md:col-span-3  items-center justify-center font-bold text-2xl">
           <p>Statistics</p>
         </div>
-        {stats?.map((item, id) => (
+        {stats?.length > 0 ?
+        stats.map((item, id) => (
           <div key={id} className="flex items-center justify-center flex-col">
             <p>
               {item.stat.name} : {item.base_stat}
             </p>
             <ProgressBar progressPercentage={item.base_stat}></ProgressBar>
           </div>
-        ))}
+        ))
+        :     <Skeleton count={1} width={1024} height={144}></Skeleton>
+      }
       </div>
+      
       {/* Here is the Evolution part flex-col of 4 elements, there are maximium 3 evolutions*/}
       <div>
         <div className="flex justify-center font-bold text-2xl">
           <p>Evolution</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg mt-3 ">
-          {evolutions?.map((item, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-center flex-col"
-            >
-              <img
-                alt={item.name}
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url}.png`}
-              ></img>
-              <p key={item.name}>{item.name}</p>
-            </div>
-          ))}
+          {evolutions?.length> 0 ?
+            evolutions.map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center flex-col"
+              >
+                <img
+                  alt={item.name}
+                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${item.url}.png`}
+                ></img>
+                <p key={item.name}>{item.name}</p>
+              </div>
+            ))
+            :     <Skeleton count={1} width={1024} height={144}></Skeleton>
+          }
         </div>
       </div>
 
@@ -77,9 +85,12 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
         <p>Moves</p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-between mx-auto max-h-44 max-w-screen-lg mt-3 overflow-y-auto border-t-2 border-b-2 rounded border-gray-primary p-4">
-        {moves?.map((item, id) => (
-          <TextPill key={id} value={item.move.name} color="ability"></TextPill>
-        ))}
+        {moves?.length > 0 ?
+          moves.map((item, id) => (
+            <TextPill key={id} value={item.move.name} color="ability"></TextPill>
+          ))
+          :     <Skeleton count={1} width={1024} height={144}></Skeleton>
+        }
       </div>
       {/* <div className="flex justify-center font-bold text-2xl m-4 p-4 py-6 w-2/4 rounded-full border round border-gray-primary bg-white hover:bg-type-flying shadow-xl "> */}
       <div className="flex justify-center w-8/12 sm:w-6/12 font-bold text-2xl mx-auto p-4 mt-6 rounded-full border round border-gray-primary bg-white hover:bg-type-flying shadow-xl">
@@ -90,9 +101,7 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
       </div>
       <Footer></Footer>
     </>
-  ) : (
-    <Skeleton count={1} width={1300} height={400}></Skeleton>
-  );
+  ) 
 };
 
 export default ProfileDetails;
