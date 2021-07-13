@@ -25,6 +25,8 @@
     "start": "craco start",
     "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
     "watch:css": "postcss src/styles/tailwind.css -o src/styles/app.css --watch",
+    "build": "run-s build:css react-scripts:dist",
+    "react-scripts:dist": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
@@ -42,7 +44,6 @@
       "!<rootDir>/src/fixtures/*js",
       "!<rootDir>/src/services/*js",
       "!<rootDir>/src/reportWebVitals.js"
-
     ],
     "coverageThreshold":{
       "global": {
