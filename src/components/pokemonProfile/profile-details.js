@@ -25,7 +25,7 @@ const ProfileDetails = ({ moves, stats, pokemonId }) => {
         setEvolutions(apiResult);
       } else {
         //Here it will take us to another page NOT FOUND or refresh it
-        console.log("No se encontraron cadenas de evoluciones");
+        // console.log("No se encontraron cadenas de evoluciones");
       }
     }
 

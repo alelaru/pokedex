@@ -4,7 +4,7 @@ import axios from "axios";
 export async function fetchAllPokemons(offset: number){
   var results = [];
   await axios
-    .get(`https://pokeapi.co/api/v2/pokemon?limit=250&offset=${offset}`)
+    .get(`https://pokeapi.co/api/v2/pokemon?limit=500&offset=${offset}`)
     .then((res) => {
       results = res.data.results;
     })
@@ -56,8 +56,8 @@ export const getEvolutionChainFromId = async (pokemonId: number) => {
       //   console.log(evolutionChaiUrl);
     })
     .catch((err) => {
-      return undefined;
       console.log(err.message);
+      return undefined;
     });
 
   //I couldnt make a double call from just one axios call

@@ -4,7 +4,6 @@ import { fetchAllPokemons } from "../../services/apiCalls";
 import PillButton from "../extra/pill-button";
 import Pokemon from "../pokemon/pokemon";
 
-var numberOfPokemons = 0;
 
 const PokemonList = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -22,14 +21,13 @@ const PokemonList = () => {
   }
 
   useEffect(() => {
-    numberOfPokemons = 0;
-    checkPokemons(numberOfPokemons);
+    checkPokemons(pokemonList.length);
   }, []);
 
-  const loadMorePokemons = () => {
-    numberOfPokemons = numberOfPokemons + 250;
-    console.log(numberOfPokemons);
-    checkPokemons(numberOfPokemons);
+  const loadMorePokemons = async () => {
+    console.log(pokemonList.length);
+    checkPokemons(pokemonList.length);
+    console.log(pokemonList.length);
   };
 
   return (
@@ -43,7 +41,7 @@ const PokemonList = () => {
           {pokemonList.map((pokemon, id) => (
             <Pokemon key={id} pokemonName={pokemon.name} />
           ))}
-          {numberOfPokemons <= 1118 ? (
+          {pokemonList.length < 1118 ? (
             <div data-testid="resolved" className="flex justify-center m-4 p-4 py-6 rounded-full border round border-gray-primary bg-white text-center hover:bg-type-flying shadow-xl md:col-start-2 sm:col-span-3 md:col-span-2 ">
               <PillButton
                 customClickEvent={loadMorePokemons}

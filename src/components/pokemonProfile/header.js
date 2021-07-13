@@ -2,7 +2,6 @@ import Skeleton from "react-loading-skeleton";
 import TextPill from "../extra/pill-text";
 
 const ProfileHeader = ({ image, name, order, types, abilities }) => {
-  console.log("oder", order);
   //The types is an array that inside contains an object, i realized there are just few types max 3
   //If there is not an image an skeleton will appear
   return image ? (

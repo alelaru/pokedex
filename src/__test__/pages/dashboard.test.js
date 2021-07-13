@@ -22,7 +22,7 @@ describe('<Dashboard />', () => {
       jest.clearAllMocks();
     });
 
-    it('Renders the dashboard page with 5 pokemons and pill button dissapear after 5 clicks', async () => {
+    it('Renders the dashboard page with 5 pokemons and clicks the button', async () => {
         await act(async () => {
 
             fetchAllPokemons.mockImplementation(() => pokemonListDummy)
@@ -43,11 +43,7 @@ describe('<Dashboard />', () => {
         
                 // 5 times the pill button and then disapear
                 fireEvent.click(getByTitle("button-click"));
-                fireEvent.click(getByTitle("button-click"));
-                fireEvent.click(getByTitle("button-click"));
-                fireEvent.click(getByTitle("button-click"));
-                fireEvent.click(getByTitle("button-click"));
-                debug();
+                // debug();
             })
         })
     })
@@ -70,10 +66,11 @@ describe('<Dashboard />', () => {
                 expect(getByText("Alejandro Lara Ruiz, Viva México!!")).toBeTruthy();
                 expect(fetchAllPokemons).toHaveBeenCalled();
                 expect(getByTestId("loading")).toBeTruthy();
-                debug();
             })
         })
     })  
-    
+
+    //The test of an array with more than 1118 pokemos i didnt do it but i tested the funcionality several times 
+    // byt hand    
     
 })

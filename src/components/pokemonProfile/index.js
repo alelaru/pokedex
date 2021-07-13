@@ -18,7 +18,7 @@ const ProfilePokemon = () => {
         setPokemonDetails(pokemon);
       } else {
         //Here it will take us to another page NOT FOUND or refresh it
-        console.log("NO ENCONTRÓ NADA");
+        // console.log("NO ENCONTRÓ NADA");
         history.push(ROUTES.NOT_FOUND);
         setPokemonDetails(undefined)
       }

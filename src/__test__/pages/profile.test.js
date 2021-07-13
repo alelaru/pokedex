@@ -34,7 +34,6 @@ describe('<Profile Page />', () => {
             );
             
             await waitFor(() => {
-
                 expect(mockHistoryPush).not.toHaveBeenCalledWith(ROUTES.NOT_FOUND);
                 expect(getByTitle("PokeAPI")).toBeTruthy();
                 expect(getByText("Alejandro Lara Ruiz, Viva México!!")).toBeTruthy();
@@ -45,7 +44,6 @@ describe('<Profile Page />', () => {
                 expect(getByText("body-slam")).toBeTruthy();
                 expect(getByText("charmeleon")).toBeTruthy();
                 expect(getDetailesFromPokemon).toHaveBeenCalled();
-
                 //Clicks the button to go to Homepage
                 fireEvent.click(getByText("Go back to Homepage"))
                 expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.DASHBOARD);
@@ -53,75 +51,67 @@ describe('<Profile Page />', () => {
         })
     })
 
-//Test when the evolution-chain api returns nothing
-it('Renders returning an undefined value from the evolution-chain array', async () => {
+    //Test when the evolution-chain api returns nothing
+    it('Renders returning an undefined value from the evolution-chain array', async () => {
 
-    await act(async () => {
-        getDetailesFromPokemon.mockImplementation(() => detailsOfOnePokemonEmpty);
-        getEvolutionChainFromId.mockImplementation(() => undefined)
+        await act(async () => {
+            getDetailesFromPokemon.mockImplementation(() => detailsOfOnePokemonEmpty);
+            getEvolutionChainFromId.mockImplementation(() => undefined)
 
-        const { getByTitle, getByText} = render(
-            <Router>
-                <DetailsPage></DetailsPage>
-            </Router> 
-        );
-        
-        await waitFor(() => {
-
-            expect(getDetailesFromPokemon).toHaveBeenCalled();
-            expect(getByText("Evolution")).toBeTruthy();
-            expect(getByText("Evolution")).toBeTruthy();
-            expect(getByText("Moves")).toBeTruthy();
-            // expect(getByText("body-slam")).toBeFalsy();
-            expect(getByTitle("PokeAPI")).toBeTruthy();
+            const { getByTitle, getByText} = render(
+                <Router>
+                    <DetailsPage></DetailsPage>
+                </Router> 
+            );
+            await waitFor(() => {
+                expect(getDetailesFromPokemon).toHaveBeenCalled();
+                expect(getByText("Evolution")).toBeTruthy();
+                expect(getByText("Evolution")).toBeTruthy();
+                expect(getByText("Moves")).toBeTruthy();
+                // expect(getByText("body-slam")).toBeFalsy();
+                expect(getByTitle("PokeAPI")).toBeTruthy();
+            })
         })
-    })
 
-})    
+    })    
 
-// Test when the api of the details pokemon returns undefined
-it('Renders returning an undefined value from the pokemonDetails API', async () => {
+    // Test when the api of the details pokemon returns undefined
+    it('Renders returning an undefined value from the pokemonDetails API', async () => {
 
-    await act(async () => {
-        getDetailesFromPokemon.mockImplementation(() => undefined);
-        const { getByTitle} = render(
-            <Router>
-                <DetailsPage></DetailsPage>
-            </Router> 
-        );
-        
-        await waitFor(() => {
-
-            expect(getDetailesFromPokemon).toHaveBeenCalled();
-            expect(getByTitle("PokeAPI")).toBeTruthy();
-            expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.NOT_FOUND);
+        await act(async () => {
+            getDetailesFromPokemon.mockImplementation(() => undefined);
+            const { getByTitle} = render(
+                <Router>
+                    <DetailsPage></DetailsPage>
+                </Router> 
+            );
+            await waitFor(() => {
+                expect(getDetailesFromPokemon).toHaveBeenCalled();
+                expect(getByTitle("PokeAPI")).toBeTruthy();
+                expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.NOT_FOUND);
+            })
         })
-    })
 
-})    
-
+    })    
 
 
-// Test when the arrays from stats, moves or evolution come empty
-it('Renders returning an undefined value from the pokemonDetails API', async () => {
 
-    await act(async () => {
-        getDetailesFromPokemon.mockImplementation(() => undefined);
-        const { getByTitle} = render(
-            <Router>
-                <DetailsPage></DetailsPage>
-            </Router> 
-        );
-        
-        await waitFor(() => {
+    // Test when the arrays from stats, moves or evolution come empty
+    it('Renders the page without pokemon information, the api fails or ir doesnt exists', async () => {
 
-            expect(getDetailesFromPokemon).toHaveBeenCalled();
-            expect(getByTitle("PokeAPI")).toBeTruthy();
-            expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.NOT_FOUND);
+        await act(async () => {
+            getDetailesFromPokemon.mockImplementation(() => undefined);
+            const { getByTitle} = render(
+                <Router>
+                    <DetailsPage></DetailsPage>
+                </Router> 
+            );
+            await waitFor(() => {
+                expect(getDetailesFromPokemon).toHaveBeenCalled();
+                expect(getByTitle("PokeAPI")).toBeTruthy();
+                expect(mockHistoryPush).toHaveBeenCalledWith(ROUTES.NOT_FOUND);
+            })
         })
-    })
-
-})    
-
+    })    
 
 })
