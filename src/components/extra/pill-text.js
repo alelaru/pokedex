@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const TextPill = ({ value, color }) => {
   return (
     <div key={value} className="flex items-center justify-center flex-col">
@@ -11,3 +13,8 @@ const TextPill = ({ value, color }) => {
 };
 
 export default TextPill;
+
+TextPill.propTypes = {
+  value: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};

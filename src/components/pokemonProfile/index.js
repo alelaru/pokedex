@@ -6,7 +6,7 @@ import ProfileDetails from "./profile-details";
 import * as ROUTES from "../../constants/routes";
 
 const ProfilePokemon = () => {
-  const { pokemonName } = useParams();
+  const { pokemonName } = useParams("");
   const [pokemonDetails, setPokemonDetails] = useState({});
   const history = useHistory();
 

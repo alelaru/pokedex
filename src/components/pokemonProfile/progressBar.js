@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ProgressBar = ({ progressPercentage }) => {
   if (progressPercentage > 100) {
     progressPercentage = 100;
@@ -20,3 +22,8 @@ const ProgressBar = ({ progressPercentage }) => {
 };
 
 export default ProgressBar;
+
+
+ProgressBar.propTypes = {
+  progressPercentage: PropTypes.number.isRequired
+};

@@ -10,7 +10,7 @@ const PokemonList = () => {
 
   //This functions calls the asyncronous funcions of getAllPokemons from services/apiCalls
     
-  async function checkPokemons(offset) {
+  async function checkPokemons(offset: number) {
     const pokemons = await fetchAllPokemons(offset);
     if (pokemons.length > 0) {
       setPokemonList([...pokemonList, ...pokemons]);
@@ -25,9 +25,7 @@ const PokemonList = () => {
   }, []);
 
   const loadMorePokemons = async () => {
-    console.log(pokemonList.length);
     checkPokemons(pokemonList.length);
-    console.log(pokemonList.length);
   };
 
   return (

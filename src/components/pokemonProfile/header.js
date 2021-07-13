@@ -1,5 +1,7 @@
 import Skeleton from "react-loading-skeleton";
 import TextPill from "../extra/pill-text";
+import PropTypes from "prop-types";
+
 
 const ProfileHeader = ({ image, name, order, types, abilities }) => {
   //The types is an array that inside contains an object, i realized there are just few types max 3
@@ -56,3 +58,11 @@ const ProfileHeader = ({ image, name, order, types, abilities }) => {
 };
 
 export default ProfileHeader;
+
+ProfileHeader.propTypes = {
+  types: PropTypes.array,
+  abilities: PropTypes.array,
+  order: PropTypes.number,
+  name: PropTypes.string,
+  image: PropTypes.string
+};
